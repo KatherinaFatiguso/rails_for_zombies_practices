@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Zombie:</strong>
+  <%= @brain.zombie %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @brain.status %>
+</p>
+
+<p>
+  <strong>Flavour:</strong>
+  <%= @brain.flavour %>
+</p>
+
+<%= link_to 'Edit', edit_brain_path(@brain) %> |
+<%= link_to 'Back', brains_path %>

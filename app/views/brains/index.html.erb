@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Brains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Zombie</th>
+      <th>Status</th>
+      <th>Flavour</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brains.each do |brain| %>
+      <tr>
+        <td><%= brain.zombie %></td>
+        <td><%= brain.status %></td>
+        <td><%= brain.flavour %></td>
+        <td><%= link_to 'Show', brain %></td>
+        <td><%= link_to 'Edit', edit_brain_path(brain) %></td>
+        <td><%= link_to 'Destroy', brain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Brain', new_brain_path %>
