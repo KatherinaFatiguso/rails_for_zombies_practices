@@ -16,9 +16,9 @@
       <tr>
         <td><%= link_to tweet.zombie.id, zombie_path(tweet.zombie) %></td>
         <td><%= tweet.status %></td>
-        <td><%= link_to 'Show', zombie_tweet_path(@zombie, tweet) %></td>
+        <td><%= link_to 'Show', [@zombie, tweet] %></td>
         <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie, tweet) %></td>
-        <td><%= link_to 'Destroy', zombie_tweet_path(@zombie, tweet), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [@zombie, tweet], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
