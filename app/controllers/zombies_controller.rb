@@ -4,7 +4,7 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
-    @zombies = Zombie.includes(:brain).all # use 'includes' to avoid query for each brain, which creates N + 1 issue (slower database)
+    @zombies = Zombie.includes(:brain).includes(:tweets).all # use 'includes' to avoid query for each brain, which creates N + 1 issue (slower database)
   end
 
   # GET /zombies/1

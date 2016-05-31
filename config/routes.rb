@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :tweets
   resources :assignments
   resources :roles
   resources :brains
-  resources :zombies
+  resources :zombies do
+    resources :tweets # this is using the zombie scope so that we only search the tweets of that particular zombie
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

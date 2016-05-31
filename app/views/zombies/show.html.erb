@@ -15,5 +15,13 @@
   <%= @zombie.age %>
 </p>
 
+<p>
+  <strong>Tweets:(<%= @zombie.tweets.count %>)</strong>
+  <% @zombie.tweets.each do |tweet| %><br>
+    <%= link_to tweet.status, zombie_tweet_path(@zombie, tweet.id) %> -
+    <%= tweet.created_at %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_zombie_path(@zombie) %> |
 <%= link_to 'Back', zombies_path %>

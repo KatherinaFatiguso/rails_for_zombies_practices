@@ -1,15 +1,22 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_filter :get_zombie
+
+  def get_zombie
+    @zombie = Zombie.find(params[:zombie_id])
+  end
 
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all
+    # @tweets = Tweet.all ## do not use this anymore
+    @tweets = @zombie.tweets
   end
 
   # GET /tweets/1
   # GET /tweets/1.json
   def show
+    @tweet = @zombie.tweets
   end
 
   # GET /tweets/new
@@ -19,6 +26,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1/edit
   def edit
+    # @tweet = @zombie.tweets.find(params[:id])
   end
 
   # POST /tweets
@@ -28,7 +36,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to zombie_tweet_path(@zombie, id: @tweet.id), notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }
@@ -42,7 +50,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to zombie_tweet_path(@zombie, id: @tweet.id), notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { render :edit }

@@ -1,4 +1,5 @@
-<%= form_for(@zombie) do |f| %>
+<%= simple_form_for(@zombie) do |f| %>
+  <%= f.error_notification %>
   <% if @zombie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@zombie.errors.count, "error") %> prohibited this zombie from being saved:</h2>
