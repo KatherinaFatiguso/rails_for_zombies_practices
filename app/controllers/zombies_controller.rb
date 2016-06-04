@@ -1,6 +1,5 @@
 class ZombiesController < ApplicationController
   before_action :set_zombie, only: [:show, :edit, :update, :destroy]
-
   # GET /zombies
   # GET /zombies.json
   def index
@@ -69,6 +68,7 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :age)
+      params.require(:zombie).permit(:name, :bio, :age, :decomp)
     end
+
 end

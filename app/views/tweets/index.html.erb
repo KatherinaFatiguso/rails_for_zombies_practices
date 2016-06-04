@@ -23,7 +23,11 @@
     <% end %>
   </tbody>
 </table>
-
+  <%# @tweets.each do |tweet| %>
+    <%#= div_for tweet do %>
+      <%#= tweet.body %>
+    <%# end %>
+  <%# end %>
 <br>
 
 <%= link_to 'New Tweet', new_zombie_tweet_path(@zombie) %>
