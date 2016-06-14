@@ -1,0 +1,26 @@
+<% if @zombie.new_record? %>
+  $('input#zombie_name').effect('highlight', {color: 'red'});
+  $('input#zombie_age').effect('highlight', {color: 'red'});
+  // if the zombie name in the form is blank and user tried to save it, highlight the form with red color
+  // but to make the red highlight appears, you need to add validation in zombie.rb file:
+  // validates :name, presence: true
+<% else %>
+  $('div#zombies').append("<%= escape_javascript(render @zombie) %>");
+  // first we are going to list the zombies inside the div zombies
+  // then we are going to append a new zombie to the list the new zombie
+  // we have to escape it properly because we put html into this JavaScript
+
+  $('div#<%= dom_id(@zombie) %>').effect('highlight');
+  // Then we are going to create the div for the zombie we just created,
+  // and highlight it.
+<% end %>
+
+// because we use 'effect', must add this in the application.js file:
+// //= require jquery-ui
+// and in application.css
+// /*
+//  *= require jquery-ui
+//  */
+// and in the Gemfile:
+// gem 'jquery-ui-rails'
+// and restart server

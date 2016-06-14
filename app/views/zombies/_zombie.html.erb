@@ -1,0 +1,13 @@
+<%= div_for zombie do %>
+    <%= link_to "Zombie #{zombie.name}", zombie %>
+    <div class="actions">
+      <%= link_to 'Show', zombie %>
+      <%= link_to 'Edit', edit_zombie_path(zombie) %>
+      <% if zombie.tweets.present? %>
+        Can't delete <%= "Zombie #{zombie.name}" %><br>
+      <% else %>
+        <%= link_to 'Delete', zombie, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        <%# note: 'remote: true' will make the link a remote call %>
+      <% end %>
+    </div>
+<% end %>

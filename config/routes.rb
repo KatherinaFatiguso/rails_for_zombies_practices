@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :brains
   resources :zombies do
     resources :tweets # this is using the zombie scope so that we only search the tweets of that particular zombie
+    get :decomp, on: :member
+    post :search, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
