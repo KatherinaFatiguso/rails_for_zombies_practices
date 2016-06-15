@@ -30,11 +30,30 @@
   <br>
   <%= link_to 'New Tweet', new_zombie_tweet_path(@zombie)%>
 </p>
-
+<strong>Decomposition Phase: </strong>
+<span id="decomp"><%= @zombie.decomp %></span><%# value we want to update with AJAX %>
+<div id="custom_phase">
+  <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie), remote: true do |f| %>
+    <%# remote: true is required to call JavaScript code %>
+    <strong>Custom Phase</strong>
+      <%= f.text_field :decomp %>
+      <%= f.submit "Set" %>
+  <% end %>
+</div>
+<div id="custom_phase2">
+  <%= form_for @zombie, url: custom_decomp_zombie_path(@zombie) do |f| %>
+    <strong>Custom Phase2</strong>
+    <%= f.text_field :decomp %>
+    <%= f.submit "Set" %>
+  <% end %>
+</div>
+<br><br>
 <%= link_to 'Edit Zombie', edit_zombie_path(@zombie) %> |
 <%= link_to 'Back to Zombies Index', zombies_path %> |
 <%= link_to 'Get Decomposition Status', decomp_zombie_path(@zombie) %>
 <br><br>
+
+
 @zombie.to_json: <%= @zombie.to_json %>
 <br>
 @zombie.as_json: <%= @zombie.as_json %>

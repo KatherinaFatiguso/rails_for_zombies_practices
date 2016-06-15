@@ -1,5 +1,5 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp ]
+  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp ]
   # GET /zombies
   # GET /zombies.json
   def index
@@ -102,6 +102,16 @@ class ZombiesController < ApplicationController
       )
       # This will include brain flavour in the result:
       # {"name":"Jim","bio":"","email":null,"rotting":false,"age":20,"decomp":"fresh","brain":{"flavour":"Strawberry"}}
+    end
+  end
+
+  def custom_decomp
+    @zombie.decomp = params[:zombie][:decomp]
+    @zombie.save
+
+    respond_to do |format|
+      format.js
+      format.json { render json: @zombie.to_json(only: :decomp) }
     end
   end
 

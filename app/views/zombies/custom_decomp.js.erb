@@ -1,0 +1,8 @@
+$('#decomp').text('<%= @zombie.decomp %>').effect('highlight', {}, 3000);
+// This is to setup span id 'decomp' with new value
+// We highlight that so that it sticks out
+
+
+<% if @zombie.decomp == "Dead (again)" %> // If the decomp is 'Dead (again)'
+  $('div#custom_phase').fadeOut(); // fade out the form in the div id ="custom_phase"
+<% end %>

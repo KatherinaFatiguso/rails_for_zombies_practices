@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :tweets # this is using the zombie scope so that we only search the tweets of that particular zombie
     get :decomp, on: :member
     post :search, on: :collection
+    put :custom_decomp, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
